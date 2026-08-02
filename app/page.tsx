@@ -49,11 +49,22 @@ const skillGroups = [
 
 const engagements = [
   {
+    company: "Hilldrup",
+    title: "Project Manager",
+    dates: "Oct 2025 – Present",
+    bullets: [
+      "Lead delivery for a multi-phase NetSuite ERP implementation",
+      "Drive large-scale backlog refinement and epic restructuring",
+      "Advise on integration and legacy-system strategy",
+      "Establish delivery reporting and sprint planning cadence",
+    ],
+  },
+  {
     company: "Forge Biologics",
     title: "Agile Delivery Lead / Project Manager",
-    dates: "Oct 2024 – Present",
+    dates: "Oct 2024 – Jan 2026",
     bullets: [
-      "Lead end-to-end delivery for large, cross-functional initiatives spanning technology, data, and business teams in a regulated environment",
+      "Led end-to-end delivery for large, cross-functional initiatives spanning technology, data, and business teams in a regulated environment",
       "Established delivery structure, cadences, and visibility across parallel workstreams with competing priorities",
       "Balanced Agile execution with governance, quality gates, and regulatory constraints",
     ],
