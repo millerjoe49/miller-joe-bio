@@ -134,7 +134,7 @@ const education = [
   { school: "Gateway Technical College", degree: "Associate of Science", dates: "1997 – 1999" },
 ];
 
-const TABS = ["Overview", "Experience", "Skills"] as const;
+const TABS = ["Overview", "Experience", "Skills", "What's Next"] as const;
 type Tab = (typeof TABS)[number];
 
 function SectionHeading({ kicker, children }: { kicker: string; children: React.ReactNode }) {
@@ -299,6 +299,52 @@ function SkillsTab() {
   );
 }
 
+function WhatsNextTab() {
+  return (
+    <section>
+      <SectionHeading kicker="Growth">What&apos;s Next</SectionHeading>
+      <ul className="list-disc space-y-2 pl-5 leading-relaxed text-zinc-700 dark:text-zinc-300">
+        <li>
+          Pursuing my{" "}
+          <a
+            href="https://education.oracle.com/oracle-netsuite-suitefoundation-specialist/pexam_N16300GC10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-accent underline underline-offset-4"
+          >
+            NetSuite SuiteFoundation
+          </a>{" "}
+          certification
+        </li>
+        <li>
+          Pursuing my{" "}
+          <a
+            href="https://www.pearsonvue.com/us/en/anthropic.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-accent underline underline-offset-4"
+          >
+            Claude Certified Architect
+          </a>{" "}
+          certification
+        </li>
+        <li>
+          Attending{" "}
+          <a
+            href="https://www.netsuitesuiteworld.com/home.shtml"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-accent underline underline-offset-4"
+          >
+            SuiteWorld
+          </a>{" "}
+          this year
+        </li>
+      </ul>
+    </section>
+  );
+}
+
 export default function ProfessionalPage() {
   const [tab, setTab] = useState<Tab>("Overview");
 
@@ -351,6 +397,7 @@ export default function ProfessionalPage() {
       {tab === "Overview" && <OverviewTab />}
       {tab === "Experience" && <ExperienceTab />}
       {tab === "Skills" && <SkillsTab />}
+      {tab === "What's Next" && <WhatsNextTab />}
     </div>
   );
 }

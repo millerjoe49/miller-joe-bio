@@ -91,49 +91,6 @@ export default function PersonalPage() {
         </ul>
       </section>
 
-      {/* What's next */}
-      <section className="mb-16">
-        <SectionHeading>What&apos;s Next</SectionHeading>
-        <ul className="mt-4 list-disc space-y-2 pl-5 leading-relaxed text-zinc-700 dark:text-zinc-300">
-          <li>
-            Pursuing my{" "}
-            <a
-              href="https://education.oracle.com/oracle-netsuite-suitefoundation-specialist/pexam_N16300GC10"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-accent underline underline-offset-4"
-            >
-              NetSuite SuiteFoundation
-            </a>{" "}
-            certification
-          </li>
-          <li>
-            Pursuing my{" "}
-            <a
-              href="https://www.pearsonvue.com/us/en/anthropic.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-accent underline underline-offset-4"
-            >
-              Claude Certified Architect
-            </a>{" "}
-            certification
-          </li>
-          <li>
-            Attending{" "}
-            <a
-              href="https://www.netsuitesuiteworld.com/home.shtml"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-accent underline underline-offset-4"
-            >
-              SuiteWorld
-            </a>{" "}
-            this year
-          </li>
-        </ul>
-      </section>
-
       {/* Contact */}
       <section>
         <SectionHeading>Say Hello</SectionHeading>
