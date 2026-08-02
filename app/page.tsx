@@ -304,27 +304,16 @@ function WhatsNextTab() {
     <section>
       <SectionHeading kicker="Growth">What&apos;s Next</SectionHeading>
       <ul className="list-disc space-y-2 pl-5 leading-relaxed text-zinc-700 dark:text-zinc-300">
+        <li>Pursuing my NetSuite SuiteFoundation certification</li>
         <li>
           Pursuing my{" "}
           <a
-            href="https://education.oracle.com/oracle-netsuite-suitefoundation-specialist/pexam_N16300GC10"
+            href="https://anthropic-partners.skilljar.com/claude-certified-associate-foundations-certification"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-accent underline underline-offset-4"
           >
-            NetSuite SuiteFoundation
-          </a>{" "}
-          certification
-        </li>
-        <li>
-          Pursuing my{" "}
-          <a
-            href="https://www.pearsonvue.com/us/en/anthropic.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-accent underline underline-offset-4"
-          >
-            Claude Certified Architect
+            Claude Certified Associate
           </a>{" "}
           certification
         </li>
