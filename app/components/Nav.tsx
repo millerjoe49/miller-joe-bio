@@ -14,8 +14,12 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-10 border-b border-black/[.08] bg-background/80 backdrop-blur-sm dark:border-white/[.145]">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4 sm:px-8">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Joe Miller
+        <Link
+          href="/"
+          aria-label="Joe Miller — home"
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-sm font-semibold text-white"
+        >
+          JM
         </Link>
         <nav className="flex gap-1">
           {links.map((link) => {
