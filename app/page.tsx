@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const certifications = [
   "Certified SAFe® 6 Practice Consultant",
   "Certified SAFe Agilist",
@@ -118,6 +122,9 @@ const education = [
   { school: "Gateway Technical College", degree: "Associate of Science", dates: "1997 – 1999" },
 ];
 
+const TABS = ["Overview", "Experience", "Skills"] as const;
+type Tab = (typeof TABS)[number];
+
 function SectionHeading({ kicker, children }: { kicker: string; children: React.ReactNode }) {
   return (
     <div className="mb-4">
@@ -127,24 +134,11 @@ function SectionHeading({ kicker, children }: { kicker: string; children: React.
   );
 }
 
-export default function ProfessionalPage() {
+function OverviewTab() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
-      {/* Hero */}
-      <section className="mb-20">
-        <div className="flex items-center gap-5">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent text-xl font-semibold text-white">
-            JM
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Joe Miller</h1>
-            <p className="mt-1 text-base text-accent sm:text-lg">
-              NetSuite ERP Implementation Lead · AI Advisor · Senior Manager at Centric
-              Consulting
-            </p>
-          </div>
-        </div>
-        <p className="mt-8 max-w-2xl leading-relaxed text-zinc-700 dark:text-zinc-300">
+    <>
+      <section className="mb-16">
+        <p className="max-w-2xl leading-relaxed text-zinc-700 dark:text-zinc-300">
           I lead NetSuite ERP implementations for mid-market companies where system accuracy
           and process discipline are non-negotiable — spanning discovery, design,
           configuration, and go-live. At Centric Consulting, I&apos;m a Senior Manager in our
@@ -160,8 +154,7 @@ export default function ProfessionalPage() {
         </p>
       </section>
 
-      {/* Certifications */}
-      <section className="mb-20">
+      <section>
         <SectionHeading kicker="Credentials">Certifications</SectionHeading>
         <div className="flex flex-wrap gap-2">
           {certifications.map((cert) => (
@@ -174,9 +167,14 @@ export default function ProfessionalPage() {
           ))}
         </div>
       </section>
+    </>
+  );
+}
 
-      {/* Recent engagements */}
-      <section className="mb-20">
+function ExperienceTab() {
+  return (
+    <>
+      <section className="mb-16">
         <SectionHeading kicker="Track Record">Recent Client Engagements</SectionHeading>
         <p className="-mt-2 mb-6 text-sm text-zinc-500 dark:text-zinc-400">
           Delivered as a consultant with Centric Consulting.
@@ -200,8 +198,7 @@ export default function ProfessionalPage() {
         </div>
       </section>
 
-      {/* Earlier career */}
-      <section className="mb-20">
+      <section>
         <SectionHeading kicker="Background">Earlier Career</SectionHeading>
         <div className="divide-y divide-black/[.08] dark:divide-white/[.145]">
           {earlierCareer.map((job) => (
@@ -217,9 +214,14 @@ export default function ProfessionalPage() {
           ))}
         </div>
       </section>
+    </>
+  );
+}
 
-      {/* Skills */}
-      <section className="mb-20">
+function SkillsTab() {
+  return (
+    <>
+      <section className="mb-16">
         <SectionHeading kicker="Toolkit">Skills</SectionHeading>
         <div className="space-y-5">
           {skillGroups.map((group) => (
@@ -242,8 +244,7 @@ export default function ProfessionalPage() {
         </div>
       </section>
 
-      {/* Education */}
-      <section className="mb-20">
+      <section className="mb-16">
         <SectionHeading kicker="Foundation">Education</SectionHeading>
         <div className="space-y-2">
           {education.map((ed) => (
@@ -260,7 +261,6 @@ export default function ProfessionalPage() {
         </div>
       </section>
 
-      {/* Contact */}
       <section className="rounded-2xl bg-accent-soft px-8 py-10 text-center">
         <h2 className="text-xl font-semibold tracking-tight text-foreground">
           Let&apos;s Connect
@@ -283,6 +283,55 @@ export default function ProfessionalPage() {
           </a>
         </p>
       </section>
+    </>
+  );
+}
+
+export default function ProfessionalPage() {
+  const [tab, setTab] = useState<Tab>("Overview");
+
+  return (
+    <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
+      {/* Hero */}
+      <section className="mb-12">
+        <div className="flex items-center gap-5">
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent text-xl font-semibold text-white">
+            JM
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Joe Miller</h1>
+            <p className="mt-1 text-base text-accent sm:text-lg">
+              NetSuite ERP Implementation Lead · AI Advisor · Senior Manager at Centric
+              Consulting
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Tab bar */}
+      <div className="mb-12 flex gap-6 border-b border-black/[.08] dark:border-white/[.145]">
+        {TABS.map((t) => (
+          <button
+            key={t}
+            onClick={() => setTab(t)}
+            className={`relative pb-3 text-sm font-medium transition-colors ${
+              tab === t
+                ? "text-foreground"
+                : "text-zinc-500 hover:text-foreground dark:text-zinc-400"
+            }`}
+          >
+            {t}
+            {tab === t && (
+              <span className="absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-accent" />
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab content */}
+      {tab === "Overview" && <OverviewTab />}
+      {tab === "Experience" && <ExperienceTab />}
+      {tab === "Skills" && <SkillsTab />}
     </div>
   );
 }
