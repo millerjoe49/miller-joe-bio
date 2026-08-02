@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const certifications = [
@@ -295,8 +296,15 @@ export default function ProfessionalPage() {
       {/* Hero */}
       <section className="mb-12">
         <div className="flex items-center gap-5">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent text-xl font-semibold text-white">
-            JM
+          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-accent/20 sm:h-24 sm:w-24">
+            <Image
+              src="/images/joe-headshot.jpg"
+              alt="Joe Miller"
+              fill
+              priority
+              sizes="(min-width: 640px) 96px, 80px"
+              className="object-cover object-[50%_20%]"
+            />
           </div>
           <div>
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Joe Miller</h1>

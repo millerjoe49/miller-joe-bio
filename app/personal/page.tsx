@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-xl font-semibold tracking-tight text-foreground">{children}</h2>
@@ -9,7 +11,19 @@ export default function PersonalPage() {
     <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
       {/* Hero */}
       <section className="mb-16">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Hi, I&apos;m Joe.</h1>
+        <div className="flex items-center gap-5">
+          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-accent/20 sm:h-24 sm:w-24">
+            <Image
+              src="/images/joe-headshot.jpg"
+              alt="Joe Miller"
+              fill
+              priority
+              sizes="(min-width: 640px) 96px, 80px"
+              className="object-cover object-[50%_20%]"
+            />
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Hi, I&apos;m Joe.</h1>
+        </div>
         <p className="mt-6 max-w-2xl leading-relaxed text-zinc-700 dark:text-zinc-300">
           [PLACEHOLDER — a casual, first-person intro: where you live, your family, what you
           do outside of work. e.g. &quot;Outside of client work, I&apos;m usually tinkering
