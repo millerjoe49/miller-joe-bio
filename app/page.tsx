@@ -118,9 +118,12 @@ const education = [
   { school: "Gateway Technical College", degree: "Associate of Science", dates: "1997 – 1999" },
 ];
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+function SectionHeading({ kicker, children }: { kicker: string; children: React.ReactNode }) {
   return (
-    <h2 className="text-xl font-semibold tracking-tight text-foreground">{children}</h2>
+    <div className="mb-4">
+      <p className="text-xs font-semibold uppercase tracking-wider text-accent">{kicker}</p>
+      <h2 className="text-xl font-semibold tracking-tight text-foreground">{children}</h2>
+    </div>
   );
 }
 
@@ -128,12 +131,20 @@ export default function ProfessionalPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
       {/* Hero */}
-      <section className="mb-16">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Joe Miller</h1>
-        <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-          NetSuite ERP Implementation Lead · AI Advisor · Senior Manager at Centric Consulting
-        </p>
-        <p className="mt-6 max-w-2xl leading-relaxed text-zinc-700 dark:text-zinc-300">
+      <section className="mb-20">
+        <div className="flex items-center gap-5">
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent text-xl font-semibold text-white">
+            JM
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Joe Miller</h1>
+            <p className="mt-1 text-base text-accent sm:text-lg">
+              NetSuite ERP Implementation Lead · AI Advisor · Senior Manager at Centric
+              Consulting
+            </p>
+          </div>
+        </div>
+        <p className="mt-8 max-w-2xl leading-relaxed text-zinc-700 dark:text-zinc-300">
           I lead NetSuite ERP implementations for mid-market companies where system accuracy
           and process discipline are non-negotiable — spanning discovery, design,
           configuration, and go-live. At Centric Consulting, I&apos;m a Senior Manager in our
@@ -150,13 +161,13 @@ export default function ProfessionalPage() {
       </section>
 
       {/* Certifications */}
-      <section className="mb-16">
-        <SectionHeading>Certifications</SectionHeading>
-        <div className="mt-4 flex flex-wrap gap-2">
+      <section className="mb-20">
+        <SectionHeading kicker="Credentials">Certifications</SectionHeading>
+        <div className="flex flex-wrap gap-2">
           {certifications.map((cert) => (
             <span
               key={cert}
-              className="rounded-full border border-black/[.08] px-3 py-1 text-sm text-zinc-700 dark:border-white/[.145] dark:text-zinc-300"
+              className="rounded-full border border-accent/30 bg-accent-soft px-3 py-1 text-sm text-accent dark:text-zinc-100"
             >
               {cert}
             </span>
@@ -165,14 +176,14 @@ export default function ProfessionalPage() {
       </section>
 
       {/* Recent engagements */}
-      <section className="mb-16">
-        <SectionHeading>Recent Client Engagements</SectionHeading>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+      <section className="mb-20">
+        <SectionHeading kicker="Track Record">Recent Client Engagements</SectionHeading>
+        <p className="-mt-2 mb-6 text-sm text-zinc-500 dark:text-zinc-400">
           Delivered as a consultant with Centric Consulting.
         </p>
-        <div className="mt-6 space-y-8">
+        <div className="space-y-6">
           {engagements.map((e) => (
-            <div key={e.company}>
+            <div key={e.company} className="border-l-2 border-accent/30 pl-5">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h3 className="font-semibold">
                   {e.title} — {e.company}
@@ -190,13 +201,13 @@ export default function ProfessionalPage() {
       </section>
 
       {/* Earlier career */}
-      <section className="mb-16">
-        <SectionHeading>Earlier Career</SectionHeading>
-        <div className="mt-4 divide-y divide-black/[.08] dark:divide-white/[.145]">
+      <section className="mb-20">
+        <SectionHeading kicker="Background">Earlier Career</SectionHeading>
+        <div className="divide-y divide-black/[.08] dark:divide-white/[.145]">
           {earlierCareer.map((job) => (
             <div
               key={job.company + job.role}
-              className="flex flex-wrap items-baseline justify-between gap-x-4 py-2 text-sm"
+              className="flex flex-wrap items-baseline justify-between gap-x-4 py-2.5 text-sm"
             >
               <span className="text-zinc-700 dark:text-zinc-300">
                 <span className="font-medium text-foreground">{job.company}</span> — {job.role}
@@ -208,9 +219,9 @@ export default function ProfessionalPage() {
       </section>
 
       {/* Skills */}
-      <section className="mb-16">
-        <SectionHeading>Skills</SectionHeading>
-        <div className="mt-4 space-y-4">
+      <section className="mb-20">
+        <SectionHeading kicker="Toolkit">Skills</SectionHeading>
+        <div className="space-y-5">
           {skillGroups.map((group) => (
             <div key={group.label}>
               <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
@@ -232,9 +243,9 @@ export default function ProfessionalPage() {
       </section>
 
       {/* Education */}
-      <section className="mb-16">
-        <SectionHeading>Education</SectionHeading>
-        <div className="mt-4 space-y-2">
+      <section className="mb-20">
+        <SectionHeading kicker="Foundation">Education</SectionHeading>
+        <div className="space-y-2">
           {education.map((ed) => (
             <div
               key={ed.school}
@@ -250,12 +261,14 @@ export default function ProfessionalPage() {
       </section>
 
       {/* Contact */}
-      <section>
-        <SectionHeading>Get in Touch</SectionHeading>
-        <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+      <section className="rounded-2xl bg-accent-soft px-8 py-10 text-center">
+        <h2 className="text-xl font-semibold tracking-tight text-foreground">
+          Let&apos;s Connect
+        </h2>
+        <p className="mt-3 text-zinc-700 dark:text-zinc-300">
           <a
             href="mailto:Joe.Miller@centricconsulting.com"
-            className="font-medium underline underline-offset-4 hover:text-foreground"
+            className="font-medium text-accent underline underline-offset-4"
           >
             Joe.Miller@centricconsulting.com
           </a>{" "}
@@ -264,7 +277,7 @@ export default function ProfessionalPage() {
             href="https://www.linkedin.com/in/millerjoe49"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium underline underline-offset-4 hover:text-foreground"
+            className="font-medium text-accent underline underline-offset-4"
           >
             LinkedIn
           </a>
